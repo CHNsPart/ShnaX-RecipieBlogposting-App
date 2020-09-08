@@ -1,0 +1,22 @@
+<%- include('./partials/header') %>
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <h1 class="md-5">Sign Up</h1>
+      <a href="/shnax">
+        <i style="font-size: 2rem; outline: none;" class="far fa-hand-point-left mt-2"></i></a>
+      <form class="mx-5 md-3 mt-3" action="/register" method="POST">
+        <div class="form-group">
+          <input class="form-control" type="text" name="username" placeholder="username" />
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="password" name="password" placeholder="password" />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-outline-primary btn-block btn-lg">Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('./partials/footer') %>

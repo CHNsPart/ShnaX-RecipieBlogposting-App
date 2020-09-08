@@ -1,0 +1,58 @@
+<%- include('../partials/header') %>
+<div class="container">
+  <a href="/shnax">
+    <i style="font-size: 2rem;float: left; outline: none;" class="far fa-hand-point-left"></i></a>
+  <h1 class="display-2 text-primary">
+  </h1>
+  <img src="<%=shnax.image%>" style="border: none; outline: none;" class="img-fluid img-thumbnail" alt="" />
+  <div class="figure-caption">
+    <h1 class="mt-3 display-4 text-primary">
+      <%=shnax.name%>
+      <h4 class="text-right text-info">5-stars</h4>
+      <div class="bar">
+        <div class="butts">
+          <% if(currentUser && shnax.author.id.equals(currentUser._id)){ %>
+          <a href="/shnax/<%=shnax._id%>/edit" class="btn btn-outline-warning btn-sm">Edit</a>
+
+          <form action="/shnax/<%= shnax._id %>?_method=DELETE" method="POST">
+            <button id="del" class="btn btn-outline-danger btn-sm">Delete</button>
+          </form>
+          <% } %>
+        </div>
+        <p class="text-right lead">Submitted by <span class="text-info">
+            <strong>
+              <%= shnax.author.username %>
+            </strong>
+          </span></p>
+      </div>
+    </h1>
+  </div>
+  <p class="my-4 lead"><%=shnax.desc%></p>
+  <hr />
+  <div class="mt-3">
+    <h3 class="display-3 md-5 text-info">Comments</h3>
+
+    <% shnax.comments.forEach(function(comment){ %>
+    <strong class="display-4 text-primary" style="font-size: 40px;">
+      <%= comment.author.username %>
+    </strong>
+    <p class="m-0 px-5 lead">
+      "<%= comment.text %>"
+    </p>
+    <%   if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+    <div class="com-del">
+      <a href="/shnax/<%=shnax._id%>/comments/<%=comment._id%>/edit" class="btn btn-sm btn-outline-warning">Edit</a>
+      <form action="/shnax/<%=shnax._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+        <button id="del" type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+      </form>
+    </div>
+    <% } %>
+    <% }); %>
+  </div>
+  <br />
+  <hr />
+  <br />
+  <a id="commentbtn" type="button" class="btn btn-outline-primary btn-block btn-lg"
+    href="/shnax/<%= shnax._id %>/comments/new">Comment</a>
+</div>
+<%- include('../partials/footer') %>

@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+  <header class="jumbotron">
+    <div class="container">
+      <h1>Welcome to the Shnax</h1>
+      <p class="lead">Create your mid-night shnax recipie</p>
+      <p>
+        <a class="btn btn-outline-primary mt-1 btn-lg" href="/shnax/new">Create New Shnax</a>
+      </p>
+    </div>
+  </header>
+
+  <div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+      <h3 class="md-5">Most Popular</h3>
+    </div>
+    <% shnax.forEach(function(shnax){ %>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <div class="thumbnail" style="border: none; outline: none;">
+        <img src="<%= shnax.image %>" style="width: 200px; height: 200px; border: none;"
+          class="img-thumbnail rounded mx-auto mt-3 d-block" alt="shnax of <%= shnax.name %>" />
+      </div>
+      <div id="card" style="width: 200px; border: none;" class="figure-caption img-thumbnail mx-auto rounded">
+        <h6><%= shnax.name.substring("0","18") %></h6>
+        <p>
+          <a href="/shnax/<%= shnax._id %>" class="btn btn-outline-primary btn-sm">More</a>
+        </p>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
+  <link rel="stylesheet" href="/stylesheets/app.css" />
+  <title>ShnaX</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-default">
+    <a class="navbar-brand" href="/shnax">
+      <img src="/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Shnax-Logo" />
+      Shnax
+    </a>
+    <button style="outline: none;" class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <i class="fas fa-bars text-primary" style="outline: none; font-size: 28px;"></i>
+      </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <% if(!currentUser){ %>
+
+        <a class="nav-item nav-link active" href="/login">Login <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="/register">Sign Up</a>
+
+        <% } else { %>
+        <a class="nav-item nav-link" href="#">signed in as <span id="profile" class="text-info">
+            <%= currentUser.username %>
+          </span></a>
+        <a class="nav-item nav-link" href="/logout">Logout</a>
+
+        <% } %>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <% if (error && error.length > 0) { %>
+    <div role="alert" class="alert alert-danger">
+      <%= error %>
+    </div>
+    <% } %>
+
+    <% if (warning && warning.length > 0) { %>
+    <div role="alert" class="alert alert-warning">
+      <%= warning %>
+    </div>
+    <% } %>
+
+    <% if (success && success.length > 0) { %>
+    <div role="alert" class="alert alert-success">
+      <%= success %>
+    </div>
+    <% } %>
+  </div>
