@@ -59,8 +59,9 @@ app.use(
     extended: true,
   })
 );
-/* var url = process.env.dbURL || "mongodb://localhost/chnscamp" */
-mongoose.connect(process.env.dbURL, {
+//"mongodb://localhost/chnscamp"
+const url = process.env.dbURL;
+mongoose.connect(url, {
   useNewUrlParser: "true",
   useUnifiedTopology: true,
 });
