@@ -69,6 +69,6 @@ app.use(indexRoutes);
 app.use(shnaxRoutes);
 app.use(commentRoutes);
 
-app.listen(port, function () {
+app.listen(process.env.PORT, function () {
   console.log("shnaxing Brudaa.......");
 });
