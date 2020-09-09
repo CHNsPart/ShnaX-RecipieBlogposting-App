@@ -1,5 +1,6 @@
 var express = require("express");
 var app = express();
+var port = 8080 || process.env.PORT;
 var mongoose = require("mongoose");
 var Shnax = require("./models/shnax");
 var Comment = require("./models/comment");
@@ -58,8 +59,8 @@ app.use(
     extended: true,
   })
 );
-
-mongoose.connect("mongodb://localhost/chnscamp", {
+var url = databaseURL || "mongodb://localhost/chnscamp"
+mongoose.connect(url, {
   useNewUrlParser: "true",
   useUnifiedTopology: true,
 });
@@ -68,6 +69,6 @@ app.use(indexRoutes);
 app.use(shnaxRoutes);
 app.use(commentRoutes);
 
-app.listen(8080, function () {
+app.listen(port, function () {
   console.log("shnaxing Brudaa.......");
 });
