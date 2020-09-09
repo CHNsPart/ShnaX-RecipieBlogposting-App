@@ -60,7 +60,7 @@ app.use(
   })
 );
 //process.env.dbURL || "mongodb://localhost/chnscamp"
-mongoose.connect("mongodb+srv://chnspart:maxchayan@shnax.9payb.mongodb.net/ShnaX?retryWrites=true&w=majority", {
+mongoose.connect(process.env.dbURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
